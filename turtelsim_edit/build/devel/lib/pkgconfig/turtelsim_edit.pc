@@ -1,0 +1,8 @@
+prefix=/home/hsn/catkin_wc/src/turtelsim_edit/build/devel
+
+Name: turtelsim_edit
+Description: Description of turtelsim_edit
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

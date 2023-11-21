@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(chatter_pkg)
+project(turtelsim_edit)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -15,8 +15,6 @@ find_package(catkin REQUIRED COMPONENTS
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
-
-
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -105,9 +103,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  # CATKIN_DEPENDS roscpp rospy std_msgs
 #  INCLUDE_DIRS include
-#  LIBRARIES chatter_pkg
+#  LIBRARIES turtelsim_edit
  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
@@ -122,16 +119,13 @@ include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
 )
+add_executable(turtle_edit src/edit.cpp)
+target_link_libraries(turtle_edit ${catkin_LIBRARIES})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/chatter_pkg.cpp
+#   src/${PROJECT_NAME}/turtelsim_edit.cpp
 # )
-add_executable(mySub src/subscriber.cpp)
-add_executable(myPub src/publisher.cpp)
-
-target_link_libraries(mySub ${catkin_LIBRARIES})
-target_link_libraries(myPub ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -141,10 +135,10 @@ target_link_libraries(myPub ${catkin_LIBRARIES})
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/chatter_pkg_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/turtelsim_edit_node.cpp)
 
 ## Rename C++ executable without prefix
-## The abo  ve recommended prefix causes long target names, the following renames the
+## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
 ## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
 # set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
@@ -161,13 +155,11 @@ target_link_libraries(myPub ${catkin_LIBRARIES})
 #############
 ## Install ##
 #############
-install(TARGETS mySub
-        RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-install(TARGETS myPub
-        RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-        # all install targets should use catkin DESTINATION variables
-# See http://ros.org/doc/api/catkin/html/adv_user_guide/variables.html
 
+# all install targets should use catkin DESTINATION variables
+# See http://ros.org/doc/api/catkin/html/adv_user_guide/variables.html
+install(TARGETS turtle_edit
+        RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
 # catkin_install_python(PROGRAMS
@@ -208,7 +200,7 @@ install(TARGETS myPub
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_chatter_pkg.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_turtelsim_edit.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

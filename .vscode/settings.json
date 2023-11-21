@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "*.js": "javascript",
-        "string": "cpp"
+        "string": "cpp",
+        "iosfwd": "cpp"
     },
     "cmake.configureOnOpen": true
 }
